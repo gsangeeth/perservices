@@ -1,0 +1,23 @@
+<?php
+
+
+/**
+ * Implements hook_node_access().
+ */
+function lock_log_activities_node_access($node, $op, $account) {
+  switch ($op) {
+    case 'update':
+    case 'delete':
+      if (!isset($account->uid)) {
+        global $user;
+        $account = $user;
+      }
+      $locklog = $node->created+(60*2);
+      $time = REQUEST_TIME;
+      // We check if the node created time passed 2min.
+      if ($node->uid == $account->uid && $time  > $locklog) {
+        return NODE_ACCESS_DENY;
+      }
+      break;
+  }
+}

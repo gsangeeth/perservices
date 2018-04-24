@@ -1,0 +1,5 @@
+name = Lock log activities
+description = Provides Lock log activities access control
+core = 7.x
+package = Custom
+

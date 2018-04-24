@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Animals feature.
+ */
+
+include_once 'animals.features.inc';
